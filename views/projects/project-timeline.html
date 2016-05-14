@@ -1,0 +1,41 @@
+<div id="page-wrapper">
+
+    <div class="container-fluid" ng-controller="ProjectsController" ng-init="getProject()">
+
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Project <small> Timeline</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li class="active">
+                        <i class="fa fa-book"></i> {{project.name}}
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+
+         <div class="row">
+            <div class="col-lg-12">
+                <div class="alert alert-info alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <i class="fa fa-info-circle"></i>  Timeline shows in an easy way the status of your project in terms of products start/end date, timeline is just an information graph
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Heading -->
+        <div class="row" ng-init="showTimelineChart()">
+            <div class="col-lg-12">
+                <div id="timelineChartObject"></div>
+            </div>
+        </div>
+        <!-- /.row -->
+
+    </div>
+    <!-- /.container-fluid -->
+
+</div>
+<!-- /#page-wrapper -->

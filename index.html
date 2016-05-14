@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="PositioningSystem">
+<head>
+    <base href="/">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Manage the integration of your projects for free with this online tool">
+    <meta name="author" content="Alejandro Morán">
+    <!-- TODO keywords -->
+    <meta name="keywords" content="integration, integration manager, project management, project integration, monitoring tool, integration monitoring">
+
+    <title>Positioning System - Integration Manager</title>
+
+    <script type="text/javascript" src="lib/timeline/timeline.js"></script>
+    <link rel="stylesheet" type="text/css" href="lib/timeline/timeline.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/admin/sb-admin.css">
+
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css' />
+    <!-- Custom Fonts -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["timeline"]});
+    </script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-65342253-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-cookies.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-resource.min.js"></script>
+    <script src="lib/dirPagination.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="http://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="http://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body id="page-top" class="index" ng-controller="LoginController" ng-init="clearCredentials()">
+
+    <span ng-if="isLoggedIn()">
+        <span ng-include="'views/admin/header.html'"></span>
+    </span>
+    <span ng-if="!isLoggedIn()">
+        <span ng-include="'views/landpage/header.html'"></span>
+    </span>
+
+    <span ng-view></span>
+
+    <span ng-if="isLoggedIn()">
+        <span ng-include="'views/admin/footer.html'"></span>
+    </span>
+    <div style="clear:both;"></div>
+    <span ng-if="!isLoggedIn()" style="margin:30px">
+
+        <div style="text-align:center;margin-top:10px;">
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- PositioningSystem -->
+                <ins class="adsbygoogle"
+                     style="display:inline-block;width:728px;height:90px"
+                     data-ad-client="ca-pub-9635316423164356"
+                     data-ad-slot="4328952563"></ins>
+                <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                </script></div>
+
+
+        <span ng-include="'views/landpage/footer.html'"></span>
+
+    </span>
+
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+
+    <script src="lib/angular/tc-angular-chartjs.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/directives.js"></script>
+    <script src="js/filters.js"></script>
+    <script src="js/services.js"></script>
+    <script src="lib/angular/ocLazyLoad.js"></script>
+    <script src="js/ng-google-chart.js"></script>
+    <script src="controllers/IndexController.js"></script>
+    <script src="controllers/LoginController.js"></script>
+    <script src="controllers/PartnersController.js"></script>
+    <script src="controllers/ProjectsController.js"></script>
+    <script src="controllers/FamiliesController.js"></script>
+    <script src="controllers/SubFamiliesController.js"></script>
+    <script src="controllers/ProductsController.js"></script>
+    <script src="controllers/ContactsController.js"></script>
+    <script src="controllers/TreeViewController.js"></script>
+    <script src="controllers/MessagesController.js"></script>
+    <script src="controllers/CountriesController.js"></script>
+    <script src="controllers/UsersController.js"></script>
+
+    <script src="http://www.google.com/jsapi" type="text/javascript"></script>
+    <script src="lib/abn_tree_directive.js">       </script>
+    <link rel="stylesheet" href="lib/abn_tree.css">
+    <script src="lib/flow.js"></script>
+    <script src="lib/fusty-flow.js"></script>
+    <script src="lib/fusty-flow.js"></script>
+    <script src="lib/fusty-flow-factory.js"></script>
+    <script src="lib/ng-flow.js"></script>
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+</body>
+</html>

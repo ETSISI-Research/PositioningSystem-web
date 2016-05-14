@@ -1,0 +1,69 @@
+<div id="page-wrapper">
+
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    My Projects <small>Take Snapshot</small>
+                </h1>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Page Heading -->
+        <div class="row">
+
+            <div class="col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> New Snapshot data</h3>
+                    </div>
+                    <div class="panel-body">
+
+                        <form name="createSnapshotForm" role="form" novalidate>
+                            <div class="form-group" ng-class="{ 'has-error': createSnapshotForm.name.$dirty && createSnapshotForm.name.$invalid }">
+                                <label for="name" class="control-label">Snapshot Name: <span class="red">*</span></label>
+                                <input type="text" ng-model="snapshot.name" name="name" placeholder="Snapshot Name" class="form-control" required>
+                                <span class="help-block" ng-show="createSnapshotForm.name.$dirty && createSnapshotForm.name.$error.required">Required</span>
+                            </div>
+
+                            <div class="form-group" ng-class="{ 'has-error': createSnapshotForm.description.$dirty && createSnapshotForm.description.$invalid }">
+                                <label for="description" class="control-label">Snapshot Description: <span class="red">*</span></label>
+                                <input type="text" ng-model="snapshot.description" name="description" placeholder="Project Description" class="form-control" required>
+                                <span class="help-block" ng-show="createSnapshotForm.description.$dirty && createSnapshotForm.description.$error.required">Required</span>
+                            </div>
+
+                            </br>
+
+
+                       
+
+                            <button ng-click="takeSnapshot()" ng-class="{ disabled: createSnapshotForm.$invalid }" class="btn btn-primary">Create</button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6" data-ng-init="showRadarChart()">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Snapshot Preview</h3>
+                    </div>
+                    <div class="panel-body">
+                        <canvas id="spiderChart" data="data" labels="labels"></canvas>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.row -->
+
+
+    </div>
+    <!-- /.container-fluid -->
+
+</div>
+        <!-- /#page-wrapper -->

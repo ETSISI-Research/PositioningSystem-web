@@ -1,0 +1,122 @@
+<div id="page-wrapper">
+
+    <div class="container-fluid" ng-init="getProject()">
+
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Project <small>View</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li class="active">
+                        <i class="fa fa-book"></i> {{project.name}}
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        
+        <div class="row">
+            <div class="col-lg-12">
+                <h1></h1>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <td>Name</td>
+                            <td>{{project.name}}</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Description</td>
+                            <td>{{project.description}}</td>
+                        </tr>
+                        <tr>
+                            <td>Project Owner</td>
+                            <td>{{project.partner}}</td>
+                        </tr>
+                        <tr>
+                            <td>Creation Date</td>
+                            <td>{{project.creationDate.date}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="thumbnail" ng-if="project.image != null || project.image == """>
+                    <img ng-src="images/projects/{{project.image}}" />
+                </div>
+
+                <a ng-href="/project/edit/{{project.id}}" class="btn btn-default btn-primary">
+                    <i class="fa fa-pencil-square-o"></i> Edit
+                </a>
+                <a ng-href="/treeview/{{project.id}}" class="btn btn-default btn-primary">
+                    <i class="fa fa-tree"></i> Show Tree
+                </a>
+                <a href="/project/timeline/{{project.id}}" class="btn btn-default btn-primary">
+                    <i class="fa fa-list-ol"></i> Timeline
+                </a>
+                <a href="/project/statistics/{{project.id}}" class="btn btn-default btn-primary">
+                    <i class="fa fa-certificate"></i> Statistics
+                </a>
+                <a href="/project/invite/{{project.id}}" class="btn btn-default btn-primary">
+                    <i class="fa fa-user"></i> Invite Associate
+                </a>
+                <a href="/project/users/{{project.id}}" class="btn btn-default btn-primary">
+                    <i class="fa fa-users"></i> Associated Users
+                </a>
+                <a href="/project/snapshots/{{project.id}}" class="btn btn-default btn-primary">
+                    <i class="fa fa-camera"></i> Snapshots
+                </a>
+                <a href="/project/snapshots/take/{{project.id}}" class="btn btn-default btn-primary">
+                    <i class="fa fa-camera-retro"></i> Take a Snapshot
+                </a>
+            </div>
+            </div><!--/.row-->
+
+            <div class="row" ng-controller="FamiliesController" ng-init="getFamilies()">
+                <div class="col-lg-12">
+                <h1>Families</h1>
+                <a href="family/create/{{project.id}}" class="btn btn-default btn-primary">
+                    <span class="glyphicon glyphicon-plus"></span> New Family
+                </a>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th ng-repeat="header in headers">{{header}}</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Owner</th>
+                            <th class="text-center">View</th>
+                            <th class="text-center">Edit</th>
+                            <th class="text-center">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="family in families">
+                            <td><a ng-href="family/view/{{family.id}}">{{family.name}}</a></td>
+                            <td>{{family.description}}</td>
+                            <td><a ng-href="/partner/view/{{family.partnerId}}">{{family.partnerName}}</td>
+                            <td class="text-center">
+                                <a ng-href="family/view/{{family.id}}"><i class="fa fa-eye"></i></a>
+                            </td>
+                            <td class="text-center">                                
+                                <a ng-href="family/edit/{{project.id}}/{{family.id}}"><i class="fa fa-pencil-square-o"></i></a>
+                            </td>
+                            <td class="text-center">
+                                <a ng-really-message="Are you sure?" ng-really-click="deleteFamily(family.id)"><i class="fa fa-times"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                
+            </div>
+            </div><!--/.row-->
+        
+    </div>
+    <!-- /.container-fluid -->
+
+</div>
+        <!-- /#page-wrapper -->

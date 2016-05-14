@@ -1,0 +1,87 @@
+<div id="page-wrapper">
+
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Partner <small>Edit</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li class="active">
+                        <i class="fa fa-dashboard"></i> {{partner.name}}
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <div class="row">
+            <div class="col-lg-12">
+
+                <form name="partnerForm" role="form" novalidate>
+                    <div class="form-group">
+                        <label for="id" class="control-label">Id:</label>
+                        <input type="text" ng-model="partner.id" name="id" class="form-control" disabled>
+                    </div>
+                    
+                    <div class="form-group" ng-class="{ 'has-error': partnerForm.name.$invalid }">
+                        <label for="name" class="control-label">Name: <span class="red">*</span></label>
+                        <input type="text" ng-model="partner.name" name="name" placeholder="name" class="form-control" required>
+                        <span class="help-block" ng-show="partnerForm.name.$error.required">Required</span>
+                    </div>
+
+                    <div class="form-group" ng-class="{ 'has-error': partnerForm.description.$invalid }">
+                        <label for="description" class="control-label">Description:</label>
+                        <input type="text" ng-model="partner.description" name="description" placeholder="description" class="form-control">
+                    </div>
+
+                    <div class="form-group" ng-class="{ 'has-error': partnerForm.partnerId.$dirty && partnerForm.partnerId.$invalid }" ng-controller="CountriesController">
+                        <label for="countryId" class="control-label">Country: <span class="red">*</span></label>
+                        <select ng-model="partner.Country_id" name="countryId" ng-options="country.id as country.name for country in countries" class="form-control" required></select>
+                        <span class="help-block" ng-show="partnerForm.countryId.$dirty && partnerForm.countryId.$error.required">Required</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="creationDate" class="control-label">Creation Date:</label>
+                        <input type="text" ng-model="partner.creationDate.date" name="creationDate" class="form-control" disabled>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="logo" class="control-label">Logo: </span></label> 
+                        <div name="logo" flow-init flow-name="uploader.flow" flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]">
+
+                            <div class="thumbnail" ng-show="partner.image != null">
+                                <img ng-src="images/partners/{{partner.image}}" />
+                            </div>
+                            <p ng-if="partner.image == null && $flow.files.length==0">There is no logo yet</p>
+
+
+                            <div class="thumbnail" ng-show="$flow.files.length">
+                                <img flow-img="$flow.files[0]" />
+                            </div>
+
+
+
+                            <button class="btn btn-warning" ng-hide="$flow.files.length" flow-btn>Select Logo</button>
+                            <button class="btn btn-danger" ng-show="uploader.flow.files.length" ng-click="uploader.flow.files[0].cancel()">Remove Logo</button>
+
+
+                        </div>
+
+                        <br />
+
+                        <button ng-click="updatePartner();upload();" ng-class="{ disabled: partnerForm.$invalid }" class="btn btn-primary">Update</button>
+
+                        <button ng-click="deletePartner(partner.id)" ng-show="!isNew()" class="btn btn-danger pull-right margin-right-10">Delete</button>
+                    </div>
+                </form>
+                </div>
+            </div><!--/.row-->
+
+    </div>
+    <!-- /.container-fluid -->
+
+</div>
+        <!-- /#page-wrapper -->

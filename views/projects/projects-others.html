@@ -1,0 +1,71 @@
+<div id="page-wrapper">
+
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Ohter's Projects <small>List</small>
+                </h1>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <div class="row" ng-init="getOthersProjects()">
+            <div class="col-lg-12">
+                <table class="table table-hover" ng-if="othersProjects.length > 0">
+                    <thead>
+                        <tr>
+                            <th ng-repeat="header in headers">{{header}}</th>     
+                            <th>Name</th>      
+                            <th>Description</th>      
+                            <th>Owner</th>
+                            <th>Logo</th>      
+                            <th>Creation Date</th>       
+                            <th class="text-center">View</th>
+                            <th class="text-center">Edit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="otherProject in othersProjects">
+                            <td><a ng-href="project/view/{{otherProject.id}}">{{otherProject.name}}</td>
+                            <td>{{otherProject.description}}</td>
+                            <td>
+                                {{otherProject.partner}}
+                            </td>
+                            <td ng-if="project.image != null">
+                                <img ng-src="images/projects/{{project.image}}" width="35px" height="35px">
+                            </td>
+                            <td ng-if="project.image == null">
+                                <i class="fa fa-file-image-o"></i>
+                            </td>
+                            <td>{{otherProject.creationDate.date}}</td>
+                            <td class="text-center">
+                                <a ng-href="project/view/{{otherProject.id}}"><i class="fa fa-eye"></i></a>
+                            </td>
+                            <td class="text-center">
+                                <a ng-href="project/edit/{{otherProject.id}}"><i class="fa fa-pencil-square-o"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div ng-if="othersProjects.length == 0" class="row">
+                    <div class="col-lg-12">
+                        <div class="alert alert-info alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <i class="fa fa-info-circle"></i>  Ohps! It seems like you have not been invited to any project!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+
+
+    </div>
+    <!-- /.container-fluid -->
+
+</div>
+<!-- /#page-wrapper -->

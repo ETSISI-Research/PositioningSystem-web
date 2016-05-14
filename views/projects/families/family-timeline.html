@@ -1,0 +1,32 @@
+<div id="page-wrapper">
+
+    <div class="container-fluid" ng-controller="FamiliesController" ng-init="getFamily()">
+
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Family <small> Timeline</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li class="active">
+                        <i class="fa fa-book"></i> {{family.name}}
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Page Heading -->
+        <div class="row" ng-init="showTimelineChart()">
+            <div class="col-lg-12">
+                <div id="timelineChartObject"></div>
+            </div>
+        </div>
+        <!-- /.row -->
+
+    </div>
+    <!-- /.container-fluid -->
+
+</div>
+        <!-- /#page-wrapper -->

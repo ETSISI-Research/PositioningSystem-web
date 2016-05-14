@@ -1,0 +1,101 @@
+<div id="page-wrapper">
+
+    <div class="container-fluid" ng-init="getFamily()">
+
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Family <small>View</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li class="active">
+                        <i class="fa fa-book"></i> <a ng-href="/project/view/{{family.Project_id}}">{{family.Proyecto}} </a>/       {{family.name}}
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>
+                    
+                </h1>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <td>Name</td>
+                            <td>{{family.name}}</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Description</td>
+                            <td>{{family.description}}</td>
+                        </tr>
+                        <tr>
+                            <td>Family Owner</td>
+                            <td>{{family.partner}}</td>
+                        </tr>
+                        <tr>
+                            <td>Creation Date</td>
+                            <td>{{family.creationDate}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a ng-href="/family/edit/{{family.Project_id}}/{{family.id}}" class="btn btn-default btn-primary margin-right-10">
+                    <span class="glyphicon glyphicon-pencil"></span> Edit
+                </a>
+                <a href="/family/timeline/{{family.id}}" class="btn btn-default btn-primary">
+                    <i class="fa fa-bar-chart"></i> Timeline
+                </a>
+            </div>
+            </div><!--/.row-->
+            <div class="row" ng-controller="SubFamiliesController" ng-init="getSubfamilies()">
+                <div class="col-lg-12">
+                <h1>SubFamilies</h1>
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th ng-repeat="header in headers">{{header}}</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Subfamily Owner</th>
+                            <th>Creation Date</th>
+                            <th class="text-center">View</th>
+                            <th class="text-center">Edit</th>
+                            <th class="text-center">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="subfamily in subfamilies">
+                            <td><a ng-href="subfamily/view/{{subfamily.id}}">{{subfamily.name}}</a></td>
+                            <td>{{subfamily.description}}</td>
+                            <td>{{subfamily.partner}}</td>
+                            <td>{{subfamily.creationDate}}</td>
+                            <td class="text-center">
+                                <a ng-href="subfamily/view/{{subfamily.id}}"><i class="fa fa-eye"></i></a>
+                            </td>
+                            <td class="text-center">
+                                <a ng-href="subfamily/edit/{{family.id}}/{{subfamily.id}}"><i class="fa fa-pencil-square-o"></i></a>
+                            </td>
+                            <td class="text-center">
+                                <a ng-really-message="Are you sure?" ng-really-click="deleteSubfamily(subfamily.id)"><i class="fa fa-times"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            
+                <a href="subfamily/create/{{family.id}}" class="btn btn-default btn-primary">
+                    <span class="glyphicon glyphicon-plus"></span> New SubFamily
+                </a>
+            </div>
+            </div><!--/.row-->
+
+    </div>
+    <!-- /.container-fluid -->
+
+</div>
+        <!-- /#page-wrapper -->
