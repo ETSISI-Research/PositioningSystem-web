@@ -2,11 +2,11 @@ app.controller('UsersController', function ($routeParams, $resource, $scope, $lo
 
     $scope.getUser = function()
     {
-        $scope.user = $resource('/api/user').get();
+        $scope.user = $resource('user').get();
     }
 
 	$scope.updateUser = function () {
-        var User = $resource('/api/user/', {  }, { update: { method: 'PUT' } });
+        var User = $resource('user/', {  }, { update: { method: 'PUT' } });
 
         if ($scope.profileForm.$valid) {
             User.update($scope.user,

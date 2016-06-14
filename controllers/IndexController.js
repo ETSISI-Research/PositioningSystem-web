@@ -2,7 +2,7 @@ app.controller('IndexController', ['$routeParams','$resource','$rootScope','$sco
   $scope.applicationName = applicationName;
 
   $scope.showGaugeChart = function() {
-    var Charts = $resource('/api/charts/gauge');
+    var Charts = $resource('charts/gauge');
     var data = Charts.get().$promise.then(
       function(data){
         $scope.gaugeChartObject = data;
@@ -12,7 +12,7 @@ app.controller('IndexController', ['$routeParams','$resource','$rootScope','$sco
   $scope.showPartnersEfficiencyChart = function () {
     // TODO
     // Solve this bullshit hardcoded 1
-    var Charts = $resource('/api/charts/partnersEfficiency/:projectId', { projectId: 1 });
+    var Charts = $resource('charts/partnersEfficiency/:projectId', { projectId: 1 });
 
     var data = Charts.get().$promise.then(
       function(data){
@@ -31,7 +31,7 @@ app.controller('IndexController', ['$routeParams','$resource','$rootScope','$sco
 
       "style": "box"
     };
-    var Charts = $resource('/api/charts/timeline/:projectId', { projectId: 1 });
+    var Charts = $resource('charts/timeline/:projectId', { projectId: 1 });
     var x = Charts.get().$promise.then(
       function(x){
         timeline = new links.Timeline(document.getElementById('timelineChartObject'), options);

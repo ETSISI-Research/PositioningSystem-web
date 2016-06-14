@@ -4,18 +4,18 @@ app.controller('SubFamiliesController', function ($routeParams, $resource, $scop
 
     $scope.getSubfamily = function()
     {
-        var SubFamily = $resource('/api/subfamily/:familyId', { familyId: subfamilyId });
+        var SubFamily = $resource('subfamily/:familyId', { familyId: subfamilyId });
         $scope.subFamily = SubFamily.get();
     }
 
     $scope.getSubfamilies = function()
     {
-        var Subfamilies = $resource('/api/subfamilies/:familyId', { familyId: familyId });
+        var Subfamilies = $resource('subfamilies/:familyId', { familyId: familyId });
         $scope.subfamilies = Subfamilies.query();
     }
 
     $scope.deleteSubfamily = function (subfamilyId) {
-        var SubFamily = $resource('/api/subfamilies/:id', { id: subfamilyId });
+        var SubFamily = $resource('subfamilies/:id', { id: subfamilyId });
         SubFamily.delete(
             function () {
                 $route.reload();
@@ -24,7 +24,7 @@ app.controller('SubFamiliesController', function ($routeParams, $resource, $scop
     }
   
     $scope.createSubfamily = function () {
-        var subfamilies = $resource('/api/subfamilies/:id', { id: familyId });
+        var subfamilies = $resource('subfamilies/:id', { id: familyId });
         if ($scope.createSubfamilyForm.$valid) {
             subfamilies.save($scope.subfamily,
                 function () {
@@ -45,7 +45,7 @@ app.controller('SubFamiliesController', function ($routeParams, $resource, $scop
         };
     
 
-            var Charts = $resource('/api/charts/subfamily/timeline/:subFamilyId', { subFamilyId: subfamilyId });
+            var Charts = $resource('charts/subfamily/timeline/:subFamilyId', { subFamilyId: subfamilyId });
             var x = Charts.get().$promise.then(
               function(x){
                 console.log(x);
@@ -56,7 +56,7 @@ app.controller('SubFamiliesController', function ($routeParams, $resource, $scop
           }
 
     $scope.updateSubFamily = function () {
-        var SubFamily = $resource('/api/subfamilies/:id', { id: subfamilyId }, { update: { method: 'PUT' } });
+        var SubFamily = $resource('subfamilies/:id', { id: subfamilyId }, { update: { method: 'PUT' } });
         if ($scope.subFamilyForm.$valid) {
             SubFamily.update($scope.subFamily,
                 function () {

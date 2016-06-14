@@ -5,25 +5,25 @@ app.controller('ProjectsController', function ($routeParams, $resource, $scope, 
     
     $scope.getProject = function()
     {
-        var Project = $resource('/api/projects/:id', { id: projectId });
+        var Project = $resource('projects/:id', { id: projectId });
         $scope.project = Project.get();
     }
 
     $scope.getProjects = function()
     {
-        var Projects = $resource('/api/projects');
+        var Projects = $resource('projects');
         $scope.projects = Projects.query();
     }
 
     $scope.getOthersProject = function()
     {
-        var OtherProject = $resource('/api/projects/others/:id', { id: projectId});
+        var OtherProject = $resource('projects/others/:id', { id: projectId});
         $scope.othersProject = OtherProject.get();
     }
 
     $scope.getAssociates = function()
     {
-        var Users = $resource('/api/projects/associates/:id', { id: projectId });
+        var Users = $resource('projects/associates/:id', { id: projectId });
         $scope.users = Users.query();
     }
 
@@ -40,7 +40,7 @@ app.controller('ProjectsController', function ($routeParams, $resource, $scope, 
     $scope.takeSnapshot = function ()
     {
         $scope.snapshot.id = projectId;
-        var Charts = $resource('/api/projects/snapshot');
+        var Charts = $resource('projects/snapshot');
         var data = Charts.save($scope.snapshot).$promise.then(
         function(data){
            $location.path('/project/snapshots/' + projectId);
@@ -53,7 +53,7 @@ app.controller('ProjectsController', function ($routeParams, $resource, $scope, 
        if($scope.selectedId != undefined)
        {
         $scope.columnType = "col-lg-6";
-        var Charts = $resource('/api/projects/spider/:projectId/:snapshotId/:compareId', { projectId: projectId, snapshotId: snapshotId, compareId: $scope.selectedId });
+        var Charts = $resource('projects/spider/:projectId/:snapshotId/:compareId', { projectId: projectId, snapshotId: snapshotId, compareId: $scope.selectedId });
         var data = Charts.get().$promise.then(
             function(data){
                 var ctx = document.getElementById("compareSpiderChart").getContext("2d");
@@ -66,7 +66,7 @@ app.controller('ProjectsController', function ($routeParams, $resource, $scope, 
 
     $scope.getSnapshots = function()
     {
-        var Snapshots = $resource('/api/snapshots/:projectId', { projectId: projectId });
+        var Snapshots = $resource('snapshots/:projectId', { projectId: projectId });
         $scope.snapshots = Snapshots.query();
         $scope.projectId = projectId;
     }
@@ -75,7 +75,7 @@ app.controller('ProjectsController', function ($routeParams, $resource, $scope, 
     $scope.sendProjectInvitation = function () {
                 $scope.error = null;
         $scope.success = null;
-        var contacts = $resource('/api/projects/invite/:projectId', { projectId: projectId });
+        var contacts = $resource('projects/invite/:projectId', { projectId: projectId });
         if ($scope.sendInvitationForm.$valid) {
             contacts.save($scope.contact,
                 function (response) {               
@@ -93,7 +93,7 @@ app.controller('ProjectsController', function ($routeParams, $resource, $scope, 
     }
 
     $scope.createProject = function () {
-        var projects = $resource('/api/projects');
+        var projects = $resource('projects');
         if ($scope.createProjectForm.$valid) {
             projects.save($scope.project,
                 function () {
@@ -105,7 +105,7 @@ app.controller('ProjectsController', function ($routeParams, $resource, $scope, 
 
     $scope.updateProject = function () {
 
-        var Project = $resource('/api/projects/:id', { id: projectId }, { update: { method: 'PUT' } });
+        var Project = $resource('projects/:id', { id: projectId }, { update: { method: 'PUT' } });
 
         if ($scope.projectForm.$valid) {
             Project.update($scope.project,
@@ -117,7 +117,7 @@ app.controller('ProjectsController', function ($routeParams, $resource, $scope, 
     }
 
     $scope.showColumnsChart = function () {
-        var Charts = $resource('/api/charts/columns/:projectId', { projectId: projectId });
+        var Charts = $resource('charts/columns/:projectId', { projectId: projectId });
         var data = Charts.get().$promise.then(
         function(data){
             $scope.columnsChartObject = data;
@@ -126,7 +126,7 @@ app.controller('ProjectsController', function ($routeParams, $resource, $scope, 
 
     $scope.showPieChart = function () {
 
-        var Charts = $resource('/api/charts/pie/:projectId', { projectId: projectId });
+        var Charts = $resource('charts/pie/:projectId', { projectId: projectId });
         var data = Charts.get().$promise.then(
         function(data){
             $scope.pieChartObject = data;
@@ -135,7 +135,7 @@ app.controller('ProjectsController', function ($routeParams, $resource, $scope, 
 
     $scope.showPartnersPieChart = function () {
 
-        var Charts = $resource('/api/charts/pie/partners/:projectId', { projectId: projectId });
+        var Charts = $resource('charts/pie/partners/:projectId', { projectId: projectId });
         var data = Charts.get().$promise.then(
         function(data){
             $scope.partnersPieChart = data;
@@ -144,7 +144,7 @@ app.controller('ProjectsController', function ($routeParams, $resource, $scope, 
 
     $scope.showCountriesPieChart = function () {
 
-        var Charts = $resource('/api/charts/pie/countries/:projectId', { projectId: projectId });
+        var Charts = $resource('charts/pie/countries/:projectId', { projectId: projectId });
         var data = Charts.get().$promise.then(
         function(data){
             $scope.countriesPieChart = data;
@@ -273,7 +273,7 @@ app.controller('ProjectsController', function ($routeParams, $resource, $scope, 
     }
                    
     $scope.showRadarChart = function () {
-        var Charts = $resource('/api/charts/spider/:projectId', { projectId: projectId });
+        var Charts = $resource('charts/spider/:projectId', { projectId: projectId });
         var data = Charts.get().$promise.then(
             function(data){
                 var ctx = document.getElementById("spiderChart").getContext("2d");
@@ -285,11 +285,11 @@ app.controller('ProjectsController', function ($routeParams, $resource, $scope, 
     
     $scope.getOthersProjects = function()
     {
-        var OtherProjects = $resource('/api/projects/others');
+        var OtherProjects = $resource('projects/others');
         $scope.othersProjects = OtherProjects.query();
     }
     $scope.deleteProject = function (projectId) {
-        var Project = $resource('/api/projects/:id', { id: projectId });
+        var Project = $resource('projects/:id', { id: projectId });
         Project.delete(
             function () {
                 $route.reload();

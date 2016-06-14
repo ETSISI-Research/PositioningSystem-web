@@ -1,7 +1,7 @@
 app.controller('ElementsController', function ($routeParams, $resource, $scope, $location, $route, $http) {
 
   scope.createProduct = function () {
-      var products = $resource('/api/products/:subfamilyId', { subfamilyId: subfamilyId } );
+      var products = $resource('products/:subfamilyId', { subfamilyId: subfamilyId } );
       if ($scope.createProductForm.$valid) {
           products.save($scope.product,
               function () {
@@ -13,7 +13,7 @@ app.controller('ElementsController', function ($routeParams, $resource, $scope, 
 
   $scope.create = function (){
     // TODO
-    var element = $resource('/api/:resource/:parentId', {resource : element.type, parentId : parentId});
+    var element = $resource(':resource/:parentId', {resource : element.type, parentId : parentId});
   }
   $scope.get = function (){
     // TODO

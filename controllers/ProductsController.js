@@ -5,24 +5,24 @@ app.controller('ProductsController', function ($routeParams, $resource, $scope, 
 
     $scope.getProduct = function()
     {
-        var Product = $resource('/api/product/:id', { id: productId });
+        var Product = $resource('product/:id', { id: productId });
         $scope.product = Product.get();
     }
 
     $scope.getProducts = function()
     {
-        var Products = $resource('/api/products/:subfamilyId', { subfamilyId: subfamilyId });
+        var Products = $resource('products/:subfamilyId', { subfamilyId: subfamilyId });
         $scope.products = Products.query();
     }
 
     $scope.getProductsByStatus = function(status)
     {
-        var ProductsByStatus = $resource('/api/products/status/:status', { status: status });
+        var ProductsByStatus = $resource('products/status/:status', { status: status });
         $scope.productsByStatus = ProductsByStatus.query();
     }
     
     $scope.createProduct = function () {
-        var products = $resource('/api/products/:subfamilyId', { subfamilyId: subfamilyId } );
+        var products = $resource('products/:subfamilyId', { subfamilyId: subfamilyId } );
         if ($scope.createProductForm.$valid) {
             products.save($scope.product,
                 function () {
@@ -34,7 +34,7 @@ app.controller('ProductsController', function ($routeParams, $resource, $scope, 
 
     $scope.updateProduct = function () {
 
-        var Product = $resource('/api/products/:productId', { productId: productId }, { update: { method: 'PUT' } });
+        var Product = $resource('products/:productId', { productId: productId }, { update: { method: 'PUT' } });
 
         if ($scope.productForm.$valid) {
             Product.update($scope.product,
@@ -47,7 +47,7 @@ app.controller('ProductsController', function ($routeParams, $resource, $scope, 
 
     $scope.deleteProduct = function (productId) {
 
-        var Product = $resource('/api/products/:id', { id: productId });
+        var Product = $resource('products/:id', { id: productId });
 
         Product.delete(
             function () {

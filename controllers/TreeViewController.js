@@ -12,6 +12,6 @@ app.controller('TreeViewController', function ($routeParams, $resource, $scope, 
         }
     };
     var projectId = $routeParams.projectId;
-    var Families = $resource('/api/treeview/:projectId', { projectId: projectId });
+    var Families = $resource('treeview/:projectId', { projectId: projectId });
     $scope.my_data = Families.query();
 });

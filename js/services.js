@@ -13,7 +13,7 @@ app.factory('AuthenticationService',
         service.Login = function (username, password, callback) {
             var authdata = Base64.encode(username + ':' + password);
             $http({
-                url: 'api/authenticate',
+                url: 'authenticate',
                 method: "GET",
                 headers: {'Content-Type': 'application/x-www-form-urlencoded', 'Authorization' : 'Basic ' + authdata}})
                 .success(function (response) {

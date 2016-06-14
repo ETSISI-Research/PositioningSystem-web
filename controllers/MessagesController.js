@@ -5,30 +5,30 @@ app.controller('MessagesController', function ($routeParams, $resource, $scope, 
 
     $scope.getMessage = function()
     {
-        var Message = $resource('/api/messages/:id', { id: messageId });
+        var Message = $resource('messages/:id', { id: messageId });
         $scope.message = Message.get();
     }
 
     $scope.getUnreadMessages = function()
     {
-        var Messages = $resource('/api/messages/unread');
+        var Messages = $resource('messages/unread');
         $scope.messages = Messages.query();
     }
 
     $scope.markAsReaded = function()
     {
-        $resource('/api/messages/markAsReaded/:id', { id: messageId }).get();
+        $resource('messages/markAsReaded/:id', { id: messageId }).get();
     }
 
     $scope.getMessages = function()
     {
-        var Messages = $resource('/api/messages');
+        var Messages = $resource('messages');
         $scope.messages = Messages.query();
     }
 
     $scope.sendMessage = function ()
 	{
-		var contacts = $resource('/api/messages/send/:contactId', { contactId: contactId });
+		var contacts = $resource('messages/send/:contactId', { contactId: contactId });
         if ($scope.sendMessageForm.$valid) {
             contacts.save($scope.message,
                 function () {

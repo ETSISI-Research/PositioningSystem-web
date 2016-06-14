@@ -20,7 +20,7 @@ app.config(function($routeProvider, $locationProvider, $ocLazyLoadProvider) {
 
     $routeProvider
         .when('/',                                          { templateUrl: 'views/landpage/index.html', controller: 'IndexController', title: 'Home' })
-		    .when('/admin',                                     { templateUrl: 'views/admin/index.html', controller: 'IndexController', title: 'Admin' })
+        .when('/admin',                                     { templateUrl: 'views/admin/index.html', controller: 'IndexController', title: 'Admin' })
         .when('/statistics',                                { templateUrl: 'views/statistics.html', controller: 'IndexController', title: 'Statistics' })
         .when('/inbox',                                     { templateUrl: 'views/inbox.html', controller: 'MessagesController', title: 'Inbox' })
         .when('/status',                                    { templateUrl: 'views/status.html', controller: 'IndexController', title: 'Status' })

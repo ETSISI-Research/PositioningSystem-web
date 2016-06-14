@@ -35,7 +35,7 @@ app.controller('LoginController', function ($routeParams, $cookieStore, $resourc
         var lastName = $scope.user.lastName
         var email = $scope.user.email
         var password = $scope.user.password
-        var User = $resource('/api/signup/:firstName/:lastName/:email/:password', { firstName: firstName, lastName: lastName, email: email, password: password});
+        var User = $resource('signup/:firstName/:lastName/:email/:password', { firstName: firstName, lastName: lastName, email: email, password: password});
         User.get(
             function (data) {
                 if (data.response == "success") {

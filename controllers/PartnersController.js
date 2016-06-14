@@ -3,11 +3,11 @@ app.controller('PartnersController', function ($routeParams, $resource, $scope, 
     var partnerId = $routeParams.partnerId;
 
     if (partnerId) {
-        var Partner = $resource('/api/partners/:id', { id: partnerId });
+        var Partner = $resource('partners/:id', { id: partnerId });
         $scope.partner = Partner.get();
     }
 
-    var Countries = $resource('/api/countries');
+    var Countries = $resource('countries');
     $scope.countries = Countries.query();
 
     $scope.uploader = {};
@@ -20,7 +20,7 @@ app.controller('PartnersController', function ($routeParams, $resource, $scope, 
     }
 
     $scope.createPartner = function () {
-        var partners = $resource('/api/partners');
+        var partners = $resource('partners');
         if ($scope.createPartnerForm.$valid) {
             partners.save($scope.partner,
                 function () {
@@ -31,7 +31,7 @@ app.controller('PartnersController', function ($routeParams, $resource, $scope, 
     }
 
     $scope.updatePartner = function () {
-        var Partner = $resource('/api/partners/:id', { id: partnerId }, { update: { method: 'PUT' } });
+        var Partner = $resource('partners/:id', { id: partnerId }, { update: { method: 'PUT' } });
         if ($scope.partnerForm.$valid) {
             Partner.update($scope.partner,
                 function () {
@@ -43,12 +43,12 @@ app.controller('PartnersController', function ($routeParams, $resource, $scope, 
 
     $scope.getPartners = function()
     {
-        var Partners = $resource('/api/partners');
+        var Partners = $resource('partners');
         $scope.partners = Partners.query();
     }
     
     $scope.deletePartner = function (partnerId) {
-        var Partner = $resource('/api/partners/:id', { id: partnerId });
+        var Partner = $resource('partners/:id', { id: partnerId });
         Partner.delete(
             function () {
                 $route.reload();

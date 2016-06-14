@@ -5,12 +5,12 @@ app.controller('FamiliesController', function ($routeParams, $resource, $scope, 
 
     $scope.getFamily = function()
     {
-        var Family = $resource('/api/family/:id', { id: familyId });
+        var Family = $resource('family/:id', { id: familyId });
         $scope.family = Family.get();
     }
 
     $scope.createFamily = function () {
-        var families = $resource('/api/families/:id', { id: projectId });
+        var families = $resource('families/:id', { id: projectId });
         if ($scope.createFamilyForm.$valid) {
             families.save($scope.family,
                 function () {
@@ -21,7 +21,7 @@ app.controller('FamiliesController', function ($routeParams, $resource, $scope, 
     }
 
     $scope.updateFamily = function () {
-        var Family = $resource('/api/families/:id', { id: familyId });
+        var Family = $resource('families/:id', { id: familyId });
         if ($scope.familyForm.$valid) {
             Family.update($scope.family,
                 function () {
@@ -33,12 +33,12 @@ app.controller('FamiliesController', function ($routeParams, $resource, $scope, 
 
     $scope.getFamilies = function ()
     {
-        var Families = $resource('/api/families/:projectId', { projectId: projectId });
+        var Families = $resource('families/:projectId', { projectId: projectId });
         $scope.families = Families.query();
     }
 
     $scope.deleteFamily = function (familyId) {
-        var Family = $resource('/api/families/:id', { id: familyId });
+        var Family = $resource('families/:id', { id: familyId });
         Family.delete(
             function () {
                 $route.reload();
