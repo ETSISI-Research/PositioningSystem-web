@@ -1,17 +1,16 @@
-var gulp        = require('gulp'),
-    del         = require('del'),
-    browserSync = require('browser-sync').create(),
-    concat      = require('gulp-concat'),
-    imagemin    = require('gulp-imagemin'),
-    jshint      = require('gulp-jshint'),
-    stylish     = require('jshint-stylish'),
-    plumber     = require('gulp-plumber'),
-    sass        = require('gulp-sass'),
-    sourcemaps  = require('gulp-sourcemaps'),
-    uglify      = require('gulp-uglify');
+var gulp        = require('gulp');
+var del         = require('del');
+var browserSync = require('browser-sync').create();
+var concat      = require('gulp-concat');
+var imagemin    = require('gulp-imagemin');
+var jshint      = require('gulp-jshint');
+var stylish     = require('jshint-stylish');
+var plumber     = require('gulp-plumber');
+var sass        = require('gulp-sass');
+var sourcemaps  = require('gulp-sourcemaps');
+var uglify      = require('gulp-uglify');
+var bower = require('gulp-bower');
 
-
-// Definición de direcotrios origen
 var srcPaths = {
     images:   'src/img/',
     scripts:  'src/js/',
@@ -20,7 +19,6 @@ var srcPaths = {
 };
 
 
-// Definición de directorios destino
 var distPaths = {
     images:   'dist/img/',
     scripts:  'dist/js/',
@@ -28,24 +26,16 @@ var distPaths = {
     files:    'dist/'
 };
 
-
-// Limpieza del directorio dist
 gulp.task('clean', function(cb) {
   del([ distPaths.files+'*.html', distPaths.images+'**/*', distPaths.scripts+'*.js', distPaths.styles+'*.css'], cb);
 });
 
-
-// Copia de los cambios en los ficheros html en el directorio dist.
 gulp.task('html', function() {
     return gulp.src([srcPaths.files+'*.html'])
         .pipe(gulp.dest(distPaths.files))
         .pipe(browserSync.stream());
 });
 
-
-/*
-* Procesamiento de imágenes para comprimir / optimizar las mismas.
-*/
 gulp.task('imagemin', function() {
     return gulp.src([srcPaths.images+'**/*'])
         .pipe(imagemin({
@@ -57,68 +47,39 @@ gulp.task('imagemin', function() {
         .pipe(browserSync.stream());
 });
 
-
-/*
-* Procesamiento de ficheros SCSS para la generación de los ficheros
-* CSS correspondientes. Los sourcemaps en este caso se generan dentro
-* del propio fichero.
-*/
 gulp.task('css', function() {
     return gulp.src([srcPaths.styles+'**/*.scss'])
         .pipe(plumber())
         .pipe(sourcemaps.init())
-            .pipe(sass())
+        .pipe(sass())
         .pipe(sourcemaps.write())
         .pipe(plumber.stop())
         .pipe(gulp.dest(distPaths.styles))
         .pipe(browserSync.stream());
 });
 
-
-/*
-* Procesamiento de ficheros JS mediante JSHint para detección de errores.
-* Este proceso es previo al tratamiento de los ficheros JS para la
-* obtención del fichero concatenado y minificado.
-*/
 gulp.task('lint', function() {
   return gulp.src([srcPaths.scripts+'**/*.js'])
     .pipe(jshint())
     .pipe(jshint.reporter(stylish));
 });
 
-
-/*
-* Procesamiento de ficheros JS para la generación de un fichero
-* final único y minificado. Los sourcemaps se generan en una
-* carpeta independiente en vez de en el propio fichero.
-*/
 gulp.task('js', ['lint'], function() {
     return gulp.src([srcPaths.scripts+'app.js', srcPaths.scripts+'**/*'])
         .pipe(plumber())
         .pipe(sourcemaps.init())
-            .pipe(concat('all.min.js'))
-            .pipe(uglify())
+        .pipe(concat('all.min.js'))
+        .pipe(uglify())
         .pipe(sourcemaps.write('maps'))
         .pipe(plumber.stop())
         .pipe(gulp.dest(distPaths.scripts))
         .pipe(browserSync.stream());
 });
 
+gulp.task('bower', function() {
+  return bower();
+});
 
-/*
-* Tarea para lanzar el proceso de servidor mediante BrowserSync.
-* Antes de comenzar la propia tarea ejecuta las tareas de las que tiene
-* dependencia: html, imagemin, css y js necesarias para disponer
-* del proyecto en dist, ya que cada vez que se lanza gulp, se hace una
-* limpieza de dicho directorio.
-*
-* En este caso se trabaja con un servidor local mediante un proxy
-* y se define la ruta de partida, así como los navegadores a lanzar
-* en caso de estar disponibles en el equipo.
-*
-* Adicionalmente se crean los watchers para procesar los cambios que se
-* puedan producir en los archivos sensibles para el proyecto.
-*/
 gulp.task('serve', ['html', 'imagemin', 'css', 'js'], function() {
     browserSync.init({
         logLevel: "info",
@@ -133,8 +94,4 @@ gulp.task('serve', ['html', 'imagemin', 'css', 'js'], function() {
     gulp.watch(srcPaths.scripts+'**/*.js', ['js']);
 });
 
-/*
-* Definción de la tarea por defecto que en este caso limpia el directorio destino
-* y lanza la tarea de servidor.
-*/
 gulp.task('default', ['clean', 'serve'], function() {});

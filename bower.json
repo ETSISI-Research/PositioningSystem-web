@@ -1,0 +1,25 @@
+{
+  "name": "PositioningSystem-web",
+  "description": "PositioningSystem AngularJS frontend",
+  "main": "",
+  "authors": [
+    "Alejandro Moran <sac@alejandromoran.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/PositioningSystem/PositioningSystem-web",
+  "private": false,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-bootstrap-nav-tree": "*",
+    "angular-google-chart": "angular-google-charts#^0.0.11",
+    "fusty-flow.js": "~1",
+    "oclazyload": "^1.0.9",
+    "ng-flow": "~2"
+  }
+}
