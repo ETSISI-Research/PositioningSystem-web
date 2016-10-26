@@ -18,7 +18,6 @@ var srcPaths = {
     files:    'src/'
 };
 
-
 var distPaths = {
     images:   'dist/img/',
     scripts:  'dist/js/',
