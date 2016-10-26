@@ -24,6 +24,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "lodash": "^4.11.1"
+    "lodash": "^4.11.1",
+    "tc-angular-chartjs": "^2.1.3"
   }
 }
