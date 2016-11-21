@@ -1,0 +1,53 @@
+<div id="page-wrapper">
+    <div class="container-fluid" ng-init="getSubfamily()">
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Subfamily <small>Edit</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li class="active">
+                        <i class="fa fa-book"></i> <a ng-href="/project/view/{{subFamily.Project_id}}">{{subFamily.Proyecto}} </a>/ <a ng-href="/family/view/{{subFamily.Family_id}}">{{subFamily.Family}} </a>/ {{subFamily.name}}
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <form name="subFamilyForm" role="form" novalidate>
+
+                    <div class="form-group" ng-class="{ 'has-error': subFamilyForm.name.$invalid }">
+                        <label for="name" class="control-label">Name: <span class="red">*</span></label>
+                        <input type="text" ng-model="subFamily.name" name="name" placeholder="name" class="form-control" required>
+                        <span class="help-block" ng-show="subFamilyForm.name.$error.required">Required</span>
+                    </div>
+
+                    <div class="form-group" ng-class="{ 'has-error': subFamilyForm.description.$invalid }">
+                        <label for="description" class="control-label">Description:</label>
+                        <input type="text" ng-model="subFamily.description" name="description" placeholder="description" class="form-control">
+                    </div>
+
+                    <div class="form-group" ng-class="{ 'has-error': createSubFamilyForm.partnerId.$dirty && createSubFamilyForm.partnerId.$invalid }" ng-controller="PartnersController" ng-init="getPartners()">
+                        <label for="partnerId" class="control-label">Subfamily Owner: <span class="red">*</span></label>
+                        <select ng-model="subFamily.Partner_id" name="partnerId" ng-options="partner.id as partner.name for partner in partners" class="form-control" required></select>
+                        <span class="help-block" ng-show="createSubFamilyForm.partnerId.$dirty && createSubFamilyForm.partnerId.$error.required">Required</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="creationDate" class="control-label">Creation Date:</label>
+                        <input type="text" ng-model="subFamily.creationDate" name="creationDate" class="form-control" disabled>
+                    </div>
+
+                    <br>
+
+                    <button ng-click="updateSubFamily()" ng-class="{ disabled: subFamilyForm.$invalid }" class="btn btn-primary">Update</button>
+
+                </form>
+                </div>
+            </div><!--/.row-->
+    </div>
+    <!-- /.container-fluid -->
+</div>
+<!-- /#page-wrapper -->

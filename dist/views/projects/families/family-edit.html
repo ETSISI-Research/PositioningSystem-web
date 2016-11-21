@@ -1,0 +1,55 @@
+<div id="page-wrapper">
+    <div class="container-fluid" ng-init="getFamily()">
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Family <small>Edit</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li class="active">
+                        <i class="fa fa-book"></i> <a ng-href="/project/view/{{family.Project_id}}">{{family.Proyecto}} </a>/     {{family.name}}
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <form name="familyForm" role="form" novalidate>
+
+                    <div class="form-group" ng-class="{ 'has-error': familyForm.name.$invalid }">
+                        <label for="name" class="control-label">Name: <span class="red">*</span></label>
+                        <input type="text" ng-model="family.name" name="name" placeholder="name" class="form-control" required>
+                        <span class="help-block" ng-show="familyForm.name.$error.required">Required</span>
+                    </div>
+
+                    <div class="form-group" ng-class="{ 'has-error': familyForm.description.$invalid }">
+                        <label for="description" class="control-label">Description:</label>
+                        <input type="text" ng-model="family.description" name="description" placeholder="description" class="form-control">
+                    </div>
+
+                    <div class="form-group" ng-class="{ 'has-error': createFamilyForm.partnerId.$dirty && createFamilyForm.partnerId.$invalid }" ng-controller="PartnersController" ng-init="getPartners()">
+                        <label for="partnerId" class="control-label">Family Owner: <span class="red">*</span></label>
+                        <select ng-model="family.Partner_id" name="partnerId" ng-options="partner.id as partner.name for partner in partners" class="form-control" required></select>
+                        <span class="help-block" ng-show="createFamilyForm.partnerId.$dirty && createFamilyForm.partnerId.$error.required">Required</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="creationDate" class="control-label">Creation Date:</label>
+                        <input type="text" ng-model="family.creationDate" name="creationDate" class="form-control" disabled>
+                    </div>
+
+                    <br>
+
+                    <button ng-click="updateFamily()" ng-class="{ disabled: familyForm.$invalid }" class="btn btn-primary">Update</button>
+
+                    <button ng-click="deleteFamily(family.id)" ng-show="!isNew()" class="btn btn-danger pull-right margin-right-10">Delete</button>
+
+                </form>
+                </div>
+            </div><!--/.row-->
+    </div>
+    <!-- /.container-fluid -->
+</div>
+<!-- /#page-wrapper -->

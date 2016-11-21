@@ -1,11 +1,10 @@
 'use strict';
 
-var app = angular.module('PositioningSystem.services', []);
-
-app.value('applicationName', 'Positioning System');
-app.value('separator', ' - ');
-
-app.factory('AuthenticationService',
+angular
+  .module('positioningSystemWebApp.services', [])
+  .value('applicationName', 'Positioning System')
+  .value('separator', ' - ')
+  .factory('AuthenticationService',
     ['Base64', '$http', '$cookieStore', '$rootScope', '$timeout',
     function (Base64, $http, $cookieStore, $rootScope, $timeout) {
         var service = {};
@@ -13,7 +12,7 @@ app.factory('AuthenticationService',
         service.Login = function (username, password, callback) {
             var authdata = Base64.encode(username + ':' + password);
             $http({
-                url: 'authenticate',
+                url: 'api/authenticate',
                 method: "GET",
                 headers: {'Content-Type': 'application/x-www-form-urlencoded', 'Authorization' : 'Basic ' + authdata}})
                 .success(function (response) {
@@ -45,7 +44,7 @@ app.factory('AuthenticationService',
         return service;
     }])
 
-app.factory('Base64', function () {
+    .factory('Base64', function () {
     /* jshint ignore:start */
 
     var keyStr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';

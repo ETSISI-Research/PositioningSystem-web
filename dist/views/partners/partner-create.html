@@ -1,0 +1,47 @@
+<div id="page-wrapper">
+
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Partner <small>Create</small>
+                </h1>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <div class="row">
+<div class="col-lg-12">
+                <form name="createPartnerForm" role="form" novalidate>
+                    <div class="form-group" ng-class="{ 'has-error': createPartnerForm.name.$dirty && createPartnerForm.name.$invalid }">
+                        <label for="name" class="control-label">Partner Name: <span class="red">*</span></label>
+                        <input type="text" ng-model="partner.name" name="name" placeholder="Partner Name" class="form-control" required>
+                        <span class="help-block" ng-show="createPartnerForm.name.$dirty && createPartnerForm.name.$error.required">Required</span>
+                    </div>
+
+                    <div class="form-group" ng-class="{ 'has-error': createPartnerForm.description.$dirty && createPartnerForm.description.$invalid }">
+                        <label for="description" class="control-label">Partner Description: <span class="red">*</span></label>
+                        <input type="text" ng-model="partner.description" name="description" placeholder="Partner Description" class="form-control" required>
+                        <span class="help-block" ng-show="createPartnerForm.description.$dirty && createPartnerForm.description.$error.required">Required</span>
+                    </div>
+
+                    <div class="form-group" ng-class="{ 'has-error': createPartnerForm.country.$dirty && createPartnerForm.country.$invalid }">
+                        <label for="country" class="control-label">Partner Country: <span class="red">*</span></label>
+                        <select ng-model="partner.country" name="country" ng-options="country.id as country.name for country in countries" class="form-control" required></select>
+                        <span class="help-block" ng-show="createPartnerForm.country.$dirty && createPartnerForm.country.$error.required">Required</span>
+                    </div>
+
+                    <br>
+
+                    <button ng-click="createPartner()" ng-class="{ disabled: createPartnerForm.$invalid }" class="btn btn-primary">Create</button>
+                </form>
+            </div>
+            </div><!--/.row-->
+
+    </div>
+    <!-- /.container-fluid -->
+
+</div>
+        <!-- /#page-wrapper -->

@@ -1,0 +1,55 @@
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Products <small>Started</small>
+                </h1>
+            </div>
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Name</th>      
+                            <th>Description</th>      
+                            <th>Owner</th>   
+                            <th>Creation Date</th>          
+                            <th class="text-center">View</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody ng-init="getProductsByStatus(1)">
+                        <tr dir-paginate="product in productsByStatus  | itemsPerPage: 10">
+                            <td><a ng-href="product/view/{{product.id}}">{{product.name}}</a></td>
+                            <td>{{product.description}}</td>
+                            <td>
+                                <a ng-href="partner/view/{{product.partnerId}}">{{product.partnerName}}</a>
+                            </td>
+                            <td>{{product.creationDate.date}}</td>
+                            <td class="text-center">
+                                <a ng-href="product/view/{{product.id}}"><i class="fa fa-eye"></i></a>
+                            </td>
+                            <td class="text-center">
+                                <a ng-href="product/edit/{{product.subfamilyId}}/{{product.id}}"><i class="fa fa-pencil-square-o"></i></a>
+                            </td>
+                            <td class="text-center">
+                                <a ng-really-message="Are you sure?" ng-really-click="deleteProduct(product.id)"><i class="fa fa-times"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div ng-controller="ContactsController">
+                    <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="lib/dirPagination.tpl.html"></dir-pagination-controls>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</div>
+<!-- /#page-wrapper -->

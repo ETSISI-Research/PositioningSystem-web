@@ -1,0 +1,100 @@
+<div id="page-wrapper">
+
+    <div class="container-fluid" ng-init="getSubfamily()">
+
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Subfamily <small>View</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li class="active">
+                        <i class="fa fa-book"></i> <a ng-href="/project/view/{{subFamily.Project_id}}">{{subFamily.Proyecto}} </a>/ <a ng-href="/family/view/{{subFamily.Family_id}}">{{subFamily.Family}} </a>/ {{subFamily.name}}
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <div class="row">
+            <div class="col-lg-12">
+                
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <td>Name</td>
+                            <td>{{subFamily.name}}</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Description</td>
+                            <td>{{subFamily.description}}</td>
+                        </tr>
+                        <tr>
+                            <td>Subfamily Owner</td>
+                            <td>{{subFamily.partner}}</td>
+                        </tr>
+                        <tr>
+                            <td>Creation Date</td>
+                            <td>{{subFamily.creationDate}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a ng-href="/subfamily/edit/{{subFamily.Family_id}}/{{subFamily.id}}" class="btn btn-default btn-primary margin-right-10">
+                    <span class="glyphicon glyphicon-pencil"></span> Edit
+                </a>
+               <a href="/subfamily/timeline/{{subFamily.id}}" class="btn btn-default btn-primary">
+                    <i class="fa fa-bar-chart"></i> Timeline
+                </a>
+            </div>
+            </div><!--/.row-->
+
+            <div class="row" ng-controller="ProductsController">
+                <div class="col-lg-12">
+                <h1>Products</h1>
+
+                <table class="table table-hover" ng-init="getProducts()">
+                    <thead>
+                        <tr>
+                            <th ng-repeat="header in headers">{{header}}</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Product Owner</th>
+                            <th>Creation Date</th>
+                            <th class="text-center">View</th>
+                            <th class="text-center">Edit</th>
+                            <th class="text-center">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="product in products">
+                            <td><a ng-href="product/view/{{product.id}}">{{product.name}}</a></td>
+                            <td>{{product.description}}</td>
+                            <td>{{product.partner}}</td>
+                            <td>{{product.creationDate.date}}</td>
+                            <td class="text-center">
+                                <a ng-href="product/view/{{product.id}}"><i class="fa fa-eye"></i></a>
+                            </td>
+                            <td class="text-center">
+                                <a ng-href="product/edit/{{subFamily.id}}/{{product.id}}"><i class="fa fa-pencil-square-o"></i></a>
+                            </td>
+                            <td class="text-center">
+                                <a  ng-really-message="Are you sure?" ng-really-click="deleteProduct(product.id)"><i class="fa fa-times"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            
+                <a href="product/create/{{subFamily.id}}" class="btn btn-default btn-primary">
+                    <span class="glyphicon glyphicon-plus"></span> New Product
+                </a>
+                </div>
+            </div><!--/.row-->
+
+    </div>
+    <!-- /.container-fluid -->
+
+</div>
+        <!-- /#page-wrapper -->

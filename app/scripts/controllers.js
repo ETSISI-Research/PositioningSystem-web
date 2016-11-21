@@ -1,10 +1,10 @@
 'use strict';
 
-var app = angular.module('PositioningSystem.controllers', [
+var app = angular.module('positioningSystemWebApp.controllers', [
     'ng',
     'ngRoute',
     'googlechart',
     'ngResource',
     'angularBootstrapNavTree',
-    'PositioningSystem.services'
+    'positioningSystemWebApp.services'
 ]);

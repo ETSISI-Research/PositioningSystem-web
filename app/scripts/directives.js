@@ -2,21 +2,21 @@
 
 // Directives
 
-var app = angular.module('PositioningSystem.directives', []);
+angular.module('positioningSystemWebApp.directives', [])
 /*
     Adds copyright year, e.g.
     <p copyright>Company</p>
 */
-app.directive('copyright', function() {
+.directive('copyright', function() {
 
     return function(scope, elm, attrs) {
 
         var year = new Date().getFullYear();
         elm.prepend('&copy; ' + year + ' ');
     };
-});
+})
 
-app.directive('ngReallyClick', [function() {
+.directive('ngReallyClick', [function() {
     return {
         restrict: 'A',
         link: function(scope, element, attrs) {

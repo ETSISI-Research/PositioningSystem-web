@@ -1,0 +1,57 @@
+<div id="page-wrapper">
+
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    My Projects <small>View Snapshot</small>
+                </h1>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <div class="row" ng-init="getSnapshots()">
+            <div class="col-lg-12">
+                <p>Compare with: </p>
+                <select ng-model="selectedId">
+                    <option value="" selected="selected">- Chose one -</option>
+                    <option value="{{snapshot.id}}" ng-repeat="snapshot in snapshots">{{snapshot.name}}</option>
+                </select>
+            </div>
+        </div>
+        <!-- /.row -->
+    </br>
+
+        <div class="row" data-ng-init="showRadarChart()">
+            <div class="{{columnType}}">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Products integration level per family</h3>
+                    </div>
+                    <div class="panel-body" style="text-align: center;">
+                        <canvas id="spiderChart" data="data" labels="labels" height="400"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6" ng-if="selectedId != undefined">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Products integration level per family</h3>
+                    </div>
+                    <div class="panel-body" style="text-align: center;">
+                        <canvas id="compareSpiderChart" data="data" labels="labels" height="400"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+
+
+    </div>
+    <!-- /.container-fluid -->
+
+</div>
+        <!-- /#page-wrapper -->

@@ -1,0 +1,51 @@
+    <div id="wrapper">
+<!-- Box Start-->
+        <div id="box_init">
+            <div id="content">
+                <h1>Positioning System</h1>
+                <!-- Social Buttons -->
+                <div class="social">
+                    <p>Positioning System is a platform for software projects management in terms of integration, get control over your partners, projects, products and their integration in the system as a whole.
+                </div>
+                <iframe width="525" height="310" src="https://www.youtube.com/embed/8OXSDJWtvhk" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <!-- Box Start-->
+        <div id="box_bg">
+            <div id="content" ng-controller="LoginController">
+                <h1>Contact</h1>
+
+                <!-- Login Fields -->
+                <div id="login">Please, fill this form in order to contact us: <br/>
+                    <input type="text" onblur="if(this.value=='')this.value='Email';" onfocus="if(this.value=='Email')this.value='';" value="Email" class="login user" id="username" ng-model="user.username" required/>
+
+
+
+                    <textarea rows="15" name='message' value='Message'  onfocus="if(this.value=='' || this.value == 'Message') {this.value='';this.type='message'}"  onblur="if(this.value == '') {this.type='text';this.value=this.defaultValue}" class="login" id="message" ng-model="user.message" required></textarea>
+                </div>
+
+                <!-- Green Button -->
+                <div class="button green"><a ng-click="login(user)">Send</a></div>
+
+                <!-- Checkbox -->
+                <div class="checkbox">
+                    <li>
+                        <fieldset>
+                            <![if !IE | (gte IE 8)]><legend id="title2" class="desc"></legend><![endif]>
+                            <!--[if lt IE 8]><label id="title2" class="desc"></label><![endif]-->
+                            <div>
+                                <span>
+
+                                </span>
+                            </div>
+                        </fieldset>
+                    </li>
+                </div>
+                </br>
+
+
+
+            </div>
+        </div>
+    </div>

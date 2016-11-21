@@ -19,13 +19,10 @@ angular
     'ng',
     'googlechart',
     'flow',
-    'PositioningSystem.controllers',
-    'PositioningSystem.directives',
-    'PositioningSystem.filters',
-    'PositioningSystem.services',
-    'angularUtils.directives.dirPagination',
-    'oc.lazyLoad',
-    'tc.chartjs'
+    'positioningSystemWebApp.controllers',
+    'positioningSystemWebApp.directives',
+    'positioningSystemWebApp.filters',
+    'positioningSystemWebApp.services',
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -81,9 +78,9 @@ angular
       .when('/products/started',                          { templateUrl: 'views/projects/products/products-started.html', controller: 'ProductsController', title: 'View Product' })
       .when('/products/notstarted',                       { templateUrl: 'views/projects/products/products-notstarted.html', controller: 'ProductsController', title: 'View Product' })
       .otherwise({redirectTo: '/'});
-  });
+  })
 
-angular.run(['$rootScope', '$location', '$cookieStore', '$http',
+  .run(['$rootScope', '$location', '$cookieStore', '$http',
     function ($rootScope, $location, $cookieStore, $http) {
         // keep user logged in after page refresh
         $rootScope.globals = $cookieStore.get('globals') || {};

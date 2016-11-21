@@ -1,0 +1,42 @@
+<section id="user-view">
+    <div class="container contentContainer">
+        <div class="box first">
+            <div class="row">
+                <h1>{{user.name}} {{user.lastName}}</h1>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>{{user.id}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Name</td>
+                            <td>{{user.name}}</td>
+                        </tr>
+                        <tr>
+                            <td>Lastname</td>
+                            <td>{{user.lastName}}</td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td><a href="mailto:{{user.email}}">{{user.email}}</a></td>
+                        </tr>
+                        <tr>
+                            <td>Active</td>
+                            <td>{{user.active}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a ng-href="/user/edit/{{user.id}}" class="btn btn-default btn-primary margin-right-10">
+                    <span class="glyphicon glyphicon-pencil"></span> Edit
+                </a>
+                <button ng-click="goBack()" class="btn btn-default pull-right">
+                    <span class="glyphicon glyphicon-arrow-left"></span> Back
+                </button>
+
+            </div><!--/.row-->
+        </div><!--/.box-->
+    </div><!--/.container-->
+</section><!--/#services-->

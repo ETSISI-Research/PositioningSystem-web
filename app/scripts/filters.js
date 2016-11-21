@@ -1,8 +1,8 @@
 'use strict';
 
-var app = angular.module('PositioningSystem.filters', []);
+angular.module('positioningSystemWebApp.filters', [])
 
-app.filter('title', [
+.filter('title', [
     'applicationName',
     'separator',
     function(applicationName, separator) {
