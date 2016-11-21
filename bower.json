@@ -8,6 +8,25 @@
   "license": "MIT",
   "homepage": "https://github.com/PositioningSystem/PositioningSystem-web",
   "private": false,
+  "version": "0.0.0",
+  "dependencies": {
+    "angular": "^1.4.0",
+    "bootstrap": "^3.2.0",
+    "angular-animate": "^1.4.0",
+    "angular-cookies": "^1.4.0",
+    "angular-resource": "^1.4.0",
+    "angular-route": "^1.4.0",
+    "angular-sanitize": "^1.4.0",
+    "angular-touch": "^1.4.0",
+    "angular-bootstrap-nav-tree": "*",
+    "angular-google-chart": "angular-google-charts#^0.0.11",
+    "fusty-flow.js": "~1",
+    "oclazyload": "^1.0.9",
+    "ng-flow": "~2"
+  },
+  "devDependencies": {
+    "angular-mocks": "^1.4.0"
+  },
   "ignore": [
     "**/.*",
     "node_modules",
@@ -15,11 +34,15 @@
     "test",
     "tests"
   ],
-  "dependencies": {
-    "angular-bootstrap-nav-tree": "*",
-    "angular-google-chart": "angular-google-charts#^0.0.11",
-    "fusty-flow.js": "~1",
-    "oclazyload": "^1.0.9",
-    "ng-flow": "~2"
+  "appPath": "app",
+  "moduleName": "positioningSystemWebApp",
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "less/bootstrap.less",
+        "dist/css/bootstrap.css",
+        "dist/js/bootstrap.js"
+      ]
+    }
   }
 }
