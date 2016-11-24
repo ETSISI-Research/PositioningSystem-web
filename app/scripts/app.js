@@ -97,4 +97,11 @@ angular
               $location.path('/admin');
             }
         });
-    }]);
+    }])
+
+
+    .directive('myCustomUrl', function () {
+       return {
+           templateUrl: 'views/components/template.tpl'
+       };
+   });
