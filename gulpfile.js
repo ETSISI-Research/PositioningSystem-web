@@ -70,15 +70,16 @@ gulp.task('clean:tmp', function (cb) {
 });
 
 gulp.task('start:client', ['start:server', 'styles'], function () {
-  openURL('http://localhost:9000');
+  openURL('http://www.positioningsys.dev');
 });
 
 gulp.task('start:server', function() {
   $.connect.server({
     root: [yeoman.app, '.tmp'],
     livereload: true,
+    proxy: 'http://www.positioningsys.dev',
     // Change this to '0.0.0.0' to access the server from outside.
-    port: 9000,
+    // port: 80,
     middleware:function(connect, opt){
       return [['/bower_components',
                connect["static"]('./bower_components')]]
