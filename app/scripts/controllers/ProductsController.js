@@ -19,6 +19,12 @@ app.controller('ProductsController', function ($routeParams, $resource, $scope, 
     {
         var ProductsByStatus = $resource('api/products/status/:status', { status: status });
         $scope.productsByStatus = ProductsByStatus.query();
+        $scope.productsByStatus.$promise.then(function successCallback(response) {
+          $scope.productsByStatus = response;
+          console.log(response);
+        }, function errorCallback(response) {
+
+        });
     }
 
     $scope.createProduct = function () {

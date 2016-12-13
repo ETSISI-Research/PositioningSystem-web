@@ -14,9 +14,10 @@ app.controller('ProjectsController', function ($routeParams, $resource, $scope, 
         var Projects = $resource('api/projects');
         $scope.projects = Projects.query();
         $scope.projects.$promise.then(function successCallback(response) {
-          console.log("xxx1");
+          $scope.projects = response;
+          console.log(response);
         }, function errorCallback(response) {
-          console.log("xxx2");
+
         });
     }
 
