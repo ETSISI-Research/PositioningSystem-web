@@ -8,7 +8,7 @@ app.controller('ContactsController', function ($routeParams, $resource, $scope, 
 
     $scope.getContactRequests = function()
     {
-    	var ContactRequests = $resource('contacts/requests');
+    	var ContactRequests = $resource('api/contacts/requests');
     	$scope.contactRequests = ContactRequests.query();
     }
 

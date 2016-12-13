@@ -24,9 +24,9 @@ angular
     'positioningSystemWebApp.filters',
     'positioningSystemWebApp.services',
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, $locationProvider) {
     $routeProvider
-      .when('/', {templateUrl: 'views/main.html', controller: 'MainCtrl', controllerAs: 'main'})
+      //.when('/', {templateUrl: 'views/main.html', controller: 'MainCtrl', controllerAs: 'main'})
       .when('/about', {templateUrl: 'views/about.html', controller: 'AboutCtrl', controllerAs: 'about'})
       .when('/',                                          { templateUrl: 'views/landpage/index.html', controller: 'IndexController', title: 'Home' })
       .when('/admin',                                     { templateUrl: 'views/admin/index.html', controller: 'IndexController', title: 'Admin' })
@@ -78,6 +78,12 @@ angular
       .when('/products/started',                          { templateUrl: 'views/projects/products/products-started.html', controller: 'ProductsController', title: 'View Product' })
       .when('/products/notstarted',                       { templateUrl: 'views/projects/products/products-notstarted.html', controller: 'ProductsController', title: 'View Product' })
       .otherwise({redirectTo: '/'});
+
+      $locationProvider.html5Mode({
+        enabled: true,
+        requireBase: false
+      });
+
   })
 
   .run(['$rootScope', '$location', '$cookieStore', '$http',

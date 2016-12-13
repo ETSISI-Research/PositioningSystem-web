@@ -15,9 +15,12 @@ angular
                 url: 'api/authenticate',
                 method: "GET",
                 headers: {'Content-Type': 'application/x-www-form-urlencoded', 'Authorization' : 'Basic ' + authdata}})
-                .success(function (response) {
-                    callback(response);
-            });
+                .then(function successCallback(response) {
+                  service.SetCredentials("testUser", "testPassword");
+                }, function errorCallback(response) {
+                  // called asynchronously if an error occurs
+                  // or server returns response with an error status.
+                });
         };
 
         service.SetCredentials = function (username, password) {

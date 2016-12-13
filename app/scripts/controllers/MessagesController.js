@@ -11,7 +11,7 @@ app.controller('MessagesController', function ($routeParams, $resource, $scope, 
 
     $scope.getUnreadMessages = function()
     {
-        var Messages = $resource('messages/unread');
+        var Messages = $resource('api/messages/unread');
         $scope.messages = Messages.query();
     }
 

@@ -79,7 +79,7 @@ gulp.task('start:server', function() {
     livereload: true,
     proxy: 'http://www.positioningsys.dev',
     // Change this to '0.0.0.0' to access the server from outside.
-    // port: 80,
+    // port: 9000,
     middleware:function(connect, opt){
       return [['/bower_components',
                connect["static"]('./bower_components')]]
@@ -176,13 +176,13 @@ gulp.task('client:build', ['html', 'styles'], function () {
     .pipe($.useref({searchPath: [yeoman.app, '.tmp']}))
     .pipe(jsFilter)
     .pipe($.ngAnnotate())
-    .pipe($.uglify())
+    //.pipe($.uglify())
     .pipe(jsFilter.restore())
     .pipe(cssFilter)
-    .pipe($.minifyCss({cache: true}))
+    .pipe($.minifyCss({cache: false}))
     .pipe(cssFilter.restore())
-    .pipe($.rev())
-    .pipe($.revReplace())
+    //.pipe($.rev())
+    //.pipe($.revReplace())
     .pipe(gulp.dest(yeoman.dist));
 });
 

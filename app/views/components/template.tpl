@@ -52,13 +52,13 @@
                 <a href="" class="dropdown-toggle" data-toggle="dropdown" ng-controller="LoginController"><i class="fa fa-user"></i> {{email}}<b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li>
-                        <a href="/profile"><i class="fa fa-fw fa-user"></i> Profile</a>
+                        <a href="profile"><i class="fa fa-fw fa-user"></i> Profile</a>
                     </li>
                     <li>
-                        <a href="/inbox"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
+                        <a href="inbox"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
                     </li>
                     <li>
-                        <a href="/settings"><i class="fa fa-fw fa-gear"></i> Settings</a>
+                        <a href="settings"><i class="fa fa-fw fa-gear"></i> Settings</a>
                     </li>
                     <li class="divider"></li>
                     <li>
@@ -71,31 +71,31 @@
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav side-nav">
                 <li>
-                    <a href="/admin"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                    <a href="/#!/admin"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                 </li>
                 <li>
-                    <a href="projects"><i class="fa fa-fw fa-bar-chart-o"></i> My Projects</a>
+                    <a href="/#!/projects"><i class="fa fa-fw fa-bar-chart-o"></i> My Projects</a>
                 </li>
                 <li>
-                    <a href="projects/others"><i class="fa fa-fw fa-bar-chart-o"></i> Other's Projects</a>
+                    <a href="/#!/projects/others"><i class="fa fa-fw fa-bar-chart-o"></i> Other's Projects</a>
                 </li>
                 <li>
-                    <a href="partners"><i class="fa fa-fw fa-bar-chart-o"></i> Partners</a>
+                    <a href="/#!/partners"><i class="fa fa-fw fa-bar-chart-o"></i> Partners</a>
                 </li>
                 <li>
-                    <a href="/inbox"><i class="fa fa-fw fa-table"></i> Messages</a>
+                    <a href="#inbox"><i class="fa fa-fw fa-table"></i> Messages</a>
                 </li>
                 <li>
                     <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Contacts <i class="fa fa-fw fa-caret-down"></i></a>
                     <ul id="demo" class="collapse">
                         <li>
-                            <a href="/contacts">Contact List</a>
+                            <a href="#/contacts">Contact List</a>
                         </li>
                         <li>
-                            <a href="contacts/add">Add Contact</a>
+                            <a href="#/contacts/add">Add Contact</a>
                         </li>
                         <li>
-                            <a href="contacts/requests">Pending Requests</a>
+                            <a href="#/contacts/requests">Pending Requests</a>
                         </li>
                     </ul>
                 </li>
