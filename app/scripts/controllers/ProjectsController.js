@@ -1,5 +1,4 @@
 app.controller('ProjectsController', function ($routeParams, $resource, $scope, $location, $route) {
-    console.log('ProjectsController');
     var projectId = $routeParams.projectId;
     var snapshotId = $routeParams.snapshotId;
 
@@ -13,12 +12,6 @@ app.controller('ProjectsController', function ($routeParams, $resource, $scope, 
     {
         var Projects = $resource('api/projects');
         $scope.projects = Projects.query();
-        $scope.projects.$promise.then(function successCallback(response) {
-          $scope.projects = response;
-          console.log(response);
-        }, function errorCallback(response) {
-
-        });
     }
 
     $scope.getOthersProject = function()

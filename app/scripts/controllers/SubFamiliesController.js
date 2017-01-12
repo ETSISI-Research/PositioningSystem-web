@@ -22,7 +22,7 @@ app.controller('SubFamiliesController', function ($routeParams, $resource, $scop
             }
         );
     }
-  
+
     $scope.createSubfamily = function () {
         var subfamilies = $resource('subfamilies/:id', { id: familyId });
         if ($scope.createSubfamilyForm.$valid) {
@@ -37,22 +37,21 @@ app.controller('SubFamiliesController', function ($routeParams, $resource, $scop
     $scope.showTimelineChart = function()
       {
         var timeline;
-        
+
         var options = {
           "width":  "100%",
-          
+
           "style": "box"
         };
-    
+
 
             var Charts = $resource('charts/subfamily/timeline/:subFamilyId', { subFamilyId: subfamilyId });
             var x = Charts.get().$promise.then(
               function(x){
-                console.log(x);
                 timeline = new links.Timeline(document.getElementById('timelineChartObject'), options);
                 timeline.draw(new google.visualization.DataTable(x));
 
-              }); 
+              });
           }
 
     $scope.updateSubFamily = function () {

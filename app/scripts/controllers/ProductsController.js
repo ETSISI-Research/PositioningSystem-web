@@ -21,7 +21,6 @@ app.controller('ProductsController', function ($routeParams, $resource, $scope, 
         $scope.productsByStatus = ProductsByStatus.query();
         $scope.productsByStatus.$promise.then(function successCallback(response) {
           $scope.productsByStatus = response;
-          console.log(response);
         }, function errorCallback(response) {
 
         });

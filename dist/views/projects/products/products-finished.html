@@ -20,10 +20,10 @@
                             <th>Creation Date</th>
                             <th class="text-center">View</th>
                             <th>Edit</th>
-                            <th>Delete<span ng-bind="getProductsByStatus(2).length"></span></th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
-                    <tbody ng-init="getProductsByStatus('2')">
+                    <tbody ng-init="getProductsByStatus(2)">
                         <tr dir-paginate="product in productsByStatus  | itemsPerPage: 10">
                             <td><a ng-href="product/view/{{product.id}}">{{product.name}}</a></td>
                             <td>{{product.description}}</td>
