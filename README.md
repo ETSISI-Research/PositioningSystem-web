@@ -1,5 +1,4 @@
-
-![](https://travis-ci.org/PositioningSystem/PositioningSystem-web.svg?branch=master)
+[![Build Status](https://travis-ci.org/PositioningSystem/PositioningSystem-web.svg?branch=master)](https://travis-ci.org/PositioningSystem/PositioningSystem-web)
 
 # positioning-system-web
 
