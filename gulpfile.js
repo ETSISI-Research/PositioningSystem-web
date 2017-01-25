@@ -206,13 +206,18 @@ gulp.task('copy:extras', function () {
     .pipe(gulp.dest(yeoman.dist));
 });
 
+gulp.task('copy:htaccess', function () {
+  return gulp.src(yeoman.app + '/.htaccess', { dot: true })
+    .pipe(gulp.dest(yeoman.dist));
+});
+
 gulp.task('copy:fonts', function () {
   return gulp.src(yeoman.app + '/fonts/**/*')
     .pipe(gulp.dest(yeoman.dist + '/fonts'));
 });
 
 gulp.task('build', ['clean:dist'], function () {
-  runSequence(['images', 'copy:extras', 'copy:fonts', 'client:build']);
+  runSequence(['images', 'copy:extras','copy:htaccess', 'copy:fonts', 'client:build']);
 });
 
 gulp.task('default', ['build']);
