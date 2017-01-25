@@ -1,7 +1,7 @@
-ReriteEngine On
+RewriteEngine On
 
 RewriteBase /api
 
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^ index.php [QSA,L] 
+RewriteRule ^ index.php [QSA,L]
