@@ -1,3 +1,6 @@
+
+![](https://travis-ci.org/PositioningSystem/PositioningSystem-web.svg?branch=master)
+
 # positioning-system-web
 
 This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
