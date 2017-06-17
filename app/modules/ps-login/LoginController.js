@@ -1,10 +1,5 @@
 app.controller('LoginController', function ($routeParams, $cookieStore, $resource,$rootScope, $scope, $location, $window, AuthenticationService) {
 
-    $scope.clearCredentials = function(){
-      //AuthenticationService.ClearCredentials();
-    }
-
-
     $scope.isLoggedIn = function(){
       $rootScope.globals = $cookieStore.get('globals') || {};
       if ($rootScope.globals.currentUser) {
